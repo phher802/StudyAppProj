@@ -19,10 +19,17 @@ import CreateArea from "./CreateArea";
 
 
 function App(){
-    const [notes, setNotes] = useState();
+
+    const [notes, setNotes] = useState([]);
 
     function addNote(note){
-        console.log(note);
+      setNotes(prevNote => {
+        return [...prevNote, note];
+      });
+    }
+
+    function deleteNote(id){
+        console.log("delete ")
     }
 
     return (
@@ -34,8 +41,9 @@ function App(){
             key={noteItem.key} 
             title={noteItem.title} 
             content={noteItem.content}
+            onDelete={deleteNote}
             />
-        )};
+        )}
         <Footer />
     </div>
     );
