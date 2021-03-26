@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
-import notes from "../notes";
 import CreateArea from "./CreateArea";
 
 //create a function to iterate through the notes array
@@ -29,20 +28,25 @@ function App(){
     }
 
     function deleteNote(id){
-        console.log("delete ")
+        setNotes(prevNotes =>{
+            prevNotes.filter((noteITem, index) => {
+                return index !== id;
+            });
+        });
     }
+
 
     return (
     <div>
         <Header />   
         <CreateArea onAdd={addNote} />   
-        {notes.map((noteItem) => 
-        <Note 
-            key={noteItem.key} 
-            title={noteItem.title} 
-            content={noteItem.content}
-            onDelete={deleteNote}
-            />
+        {notes.map((noteItem, index) => <Note 
+                key={index} 
+                id={index}
+                title={noteItem.title} 
+                content={noteItem.content}
+                onDelete={deleteNote}
+            />        
         )}
         <Footer />
     </div>
