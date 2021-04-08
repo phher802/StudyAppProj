@@ -3,7 +3,8 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
 import CreateArea from "./CreateArea";
-import { Router, Switch } from "react-router";
+import {useRoutes, A} from "hookRouter";
+//import { Router, Switch } from "react-router";
 
 //create a function to iterate through the notes array
 //createNotes function takes a single noteItem and renders a dynamic custom Note component
@@ -60,11 +61,7 @@ function App(){
             );
         })}
         <Footer />
-        <Router>
-           <Switch>
-               <Route />
-           </Switch>
-        </Router>
+       
     </div>
     );
 }
